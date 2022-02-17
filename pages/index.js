@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import Results from '../components/Results';
 import { getSession, signOut, useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import useSpotify from '../hooks/useSpotify';
