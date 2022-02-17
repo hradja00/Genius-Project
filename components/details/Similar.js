@@ -32,19 +32,21 @@ function Similar({ track, keys, millisToMinutesAndSeconds }) {
         passHref
       >
         <div className="flex mr-16 text-sm py-3 cursor-pointer transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50 opacity-90 hover:opacity-100">
-          <Image
-            height={90}
-            width={90}
-            layout="intrinsic"
-            className="flex rounded-lg pt-0"
-            src={track?.album?.images?.at(0)?.url}
-            alt=""
-          ></Image>
-          <div className="flex-col">
-            <h2 className="px-3 py-1 font-semibold font-nunito text-md">
+          <div className="w-1/3 pr-2">
+            <Image
+              height={90}
+              width={90}
+              layout="intrinsic"
+              className="rounded-lg pt-0"
+              src={track?.album?.images?.at(0)?.url}
+              alt=""
+            ></Image>
+          </div>
+          <div className="flex-col w-2/3">
+            <h2 className="pr-3 py-1 font-semibold font-nunito text-md">
               {track?.artists?.at(0)?.name} -{' ' + track?.name}
             </h2>
-            <div className="flex gap-1 px-3 py-1 font-semibold font-nunito text-md text-[#a4a4a4] opacity-80">
+            <div className="flex gap-1 pr-3 py-1 font-semibold font-nunito text-md text-[#a4a4a4] opacity-80">
               <h2>{millisToMinutesAndSeconds(trackFeatures?.duration_ms)}</h2>
               <h2>•</h2>
               <h2>

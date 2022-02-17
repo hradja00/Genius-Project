@@ -5,8 +5,12 @@ import { useClientRouter } from 'use-client-router';
 import { useEffect, useState } from 'react';
 import useSpotify from '../../hooks/useSpotify';
 import { useSession } from 'next-auth/react';
-import Image from 'next/image';
+import Artistslika from '../../components/artist_details/Artistslika';
 import Link from 'next/link';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpotify } from '@fortawesome/free-brands-svg-icons';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import Footer from '../../components/Footer';
 
 function Results() {
   const router = useClientRouter();
@@ -33,41 +37,58 @@ function Results() {
   return (
     <div className="">
       <div className="px-16 gap-8 sm:grid md:grid lg:grid-cols-3 xl:grid-cols-3 3xl:grid-cols-3 flex-wrap justify-center">
-        <div className="items-center">
-          <h1 className="text-7xl font-nunito text-center">
-            {artistData.name}
+        <div className="items-center h-full flex flex-col justify-center">
+          <h1 className="text-7xl font-nunito text-center text-[#E8E8E8] opacity-95 md:mt-8 hover:cursor-pointer">
+            <a href={artistData?.uri}>{artistData.name}</a>
           </h1>
+          <div className="p-5">
+            <div className="text-[#18D860] hover:cursor-pointer">
+              <a href={artistData?.uri}>
+                <FontAwesomeIcon icon={faSpotify} height={60} width={60} />
+              </a>
+            </div>
+            {/* <Link href={artistData?.external_urls?.spotify}></Link> */}
+          </div>
         </div>
-        <div className="items-center -mt-[0.42rem]">
+        <div className="items-center">
           <img
             width={400}
-            height={600}
+            height={300}
             src={artistData.images?.at(0)?.url}
             alt=""
-            className="opacity-70 mr-auto ml-auto rounded-b-lg border-b border-l border-r flex"
+            className="opacity-70 mr-auto ml-auto rounded-lg flex"
           ></img>
+
           {/* <h2 className="font-nunito text-4xl font-semibold text-[#E8E8E8] mt-5">
             {artistData.name}
           </h2> */}
         </div>
-        <div className="mt-16 tracking-wider">
-          <div className="flex gap-20 items-center p-5">
-            <h2 className="text-4xl font-nunito">Followers</h2>
-            <h2 className="text-2xl">{artistData.followers?.total}</h2>
-          </div>
-          <div className="flex gap-20 items-center p-5">
-            <h2 className="text-4xl font-nunito">Genre</h2>
-            <h2 className="text-2xl">
-              {artistData.genres?.at(0)}, {artistData.genres?.at(1)}
-            </h2>
-          </div>
-          <div className="flex gap-20 items-center p-5">
-            <h2 className="text-4xl font-nunito">Popularity</h2>
-            <h2 className="text-2xl">{artistData.popularity}</h2>
-          </div>
-          <div className="flex gap-20 items-center p-5">
-            <h2 className="text-4xl font-nunito">Listen on Spotify</h2>
-            {/* <Link href={artistData?.external_urls?.spotify}></Link> */}
+        <div className="">
+          <div className="flex flex-row items-center justify-center h-full">
+            <div className="w-1/2">
+              <div className="gap-20 items-center px-5">
+                <h2 className="text-4xl font-nunito font-thin py-5">
+                  Followers:
+                </h2>
+                <h2 className="text-4xl font-nunito font-thin py-5">Genre:</h2>
+                <h2 className="text-4xl font-nunito font-thin py-5">
+                  Popularity:
+                </h2>
+              </div>
+            </div>
+            <div className="w-1/2">
+              <div className="gap-20 items-center px-5 text-center">
+                <h2 className="text-4xl font-light py-5 text-[#E8E8E8]">
+                  {artistData.followers?.total}
+                </h2>
+                <h2 className="text-4xl font-light py-5 mr-2 text-[#E8E8E8] whitespace-nowrap">
+                  {artistData.genres?.at(0)}
+                </h2>
+                <h2 className="text-4xl font-light py-5 text-[#E8E8E8]">
+                  {artistData.popularity}
+                </h2>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -96,6 +117,7 @@ function Results() {
           ))}
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

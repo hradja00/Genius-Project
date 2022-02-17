@@ -5,6 +5,7 @@ import useSpotify from '../../hooks/useSpotify';
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import Similar from './Similar';
+import Leftslika from './Leftslika';
 
 function LeftSideMain({ artistTracks, trackData, trackId }) {
   const { data: session, status } = useSession();
@@ -74,13 +75,14 @@ function LeftSideMain({ artistTracks, trackData, trackId }) {
           width={300}
           className="rounded-md pt-0"
         /> */}
-      <img
+      {/* <img
         height={300}
         width={300}
         className="flex rounded-lg pt-0"
         src={trackData?.at(0)?.album?.images?.at(0)?.url}
         alt=""
-      ></img>
+      ></img> */}
+      <Leftslika trackdata={trackData} />
       <h2 className="font-nunito font-boldd mt-7 mb-3 mr-20 text-[#E8E8E8] text-md tracking-wider opacity-[0.90]">
         Similar to
         {' ' + trackData.at(0)?.artists?.at(0)?.name} - {trackData.at(0)?.name}

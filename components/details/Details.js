@@ -9,6 +9,8 @@ import Script from 'next/script';
 import Link from 'next/link';
 import LeftSideMain from './LeftSideMain';
 import Similar from './Similar';
+import Leftslika from './Leftslika';
+import Footer from '../Footer';
 
 function Details({ trackId, artistId }) {
   const { data: session, status } = useSession();
@@ -160,7 +162,7 @@ function Details({ trackId, artistId }) {
                 {Number(trackFeatures?.tempo).toFixed(0)}
               </h2>
             </div>
-            <div className="w-1/4 border-r ">
+            <div className="w-1/4 border-r">
               <h2 className="text-md">KEY</h2>
               <h2 className="text-4xl mt-2">
                 {keys[trackFeatures?.key]}
@@ -271,8 +273,8 @@ function Details({ trackId, artistId }) {
             {/* Right Side */}
 
             <div className="w-1/2">
-              <div className="w-full pr-16 py-2 sm:py-0 sm:-mt-20 sm:pr-2">
-                <h2 className="text-3xl font-nunito text-[#E8E8E8] font-medim ">
+              <div className="w-full pr-16 py-2 ">
+                <h2 className="text-3xl font-nunito text-[#E8E8E8] font-medium">
                   Danceability
                 </h2>
                 <div className="flex bg-black h-5 mb-6 mt-3 rounded-full items-center opacity-90">
@@ -292,7 +294,7 @@ function Details({ trackId, artistId }) {
                 </div>
               </div>
 
-              <div className="w-full pr-16 py-2">
+              <div className="w-full pr-16 py-2 ">
                 <h2 className="text-3xl font-nunito text-[#E8E8E8] font-medim ">
                   Positiveness
                 </h2>
@@ -333,10 +335,34 @@ function Details({ trackId, artistId }) {
                   </h2>
                 </div>
               </div>
+
+              <div className="invisible">
+                <div className="w-full pr-16 py-2">
+                  <h2 className="text-3xl font-nunito text-[#E8E8E8] font-medium">
+                    Danceability
+                  </h2>
+                  <div className="flex bg-black h-5 mb-6 mt-3 rounded-full items-center opacity-90">
+                    <div
+                      className={
+                        'relative bg-gradient-to-r from-gray-200 via-gray-300 to-gray-500 rounded-full h-4 opacity-90'
+                      }
+                      style={{
+                        width: `${Number(
+                          trackFeatures?.danceability * 100
+                        ).toFixed(0)}%`,
+                      }}
+                    ></div>
+                    <h2 className="text-2xl font-nunito text-[#E8E8E8] font-medium ml-2">
+                      {Number(trackFeatures?.danceability * 100).toFixed(0)}%
+                    </h2>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

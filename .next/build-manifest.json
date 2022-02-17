@@ -30,15 +30,20 @@
       "static/chunks/main.js",
       "server/pages/_middleware.js"
     ],
+    "/account": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/account.js"
+    ],
+    "/artist/[idartist]": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/artist/[idartist].js"
+    ],
     "/categories/[idnav]": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/categories/[idnav].js"
-    ],
-    "/tracks/[idtrack]": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/tracks/[idtrack].js"
     ]
   },
   "ampFirstPages": []

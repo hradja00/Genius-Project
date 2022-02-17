@@ -14,7 +14,6 @@ export const Layout = ({ children }) => {
       </Head>
       <Header />
       {children}
-      <Footer />
     </div>
   );
 };

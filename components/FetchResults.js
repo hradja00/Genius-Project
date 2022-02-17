@@ -4,6 +4,7 @@ import { useSession } from 'next-auth/react';
 import Thumbnail from './thumbnails/T_likedtracks';
 import { SearchIcon } from '@heroicons/react/outline';
 import Searchbar from './Searchbar';
+import Footer from './Footer';
 
 function FetchResults({ option }) {
   const { data: session, status } = useSession();
@@ -127,6 +128,7 @@ function FetchResults({ option }) {
           )}
         </div> */}
       </div>
+      <Footer />
     </div>
   );
 }
